@@ -1,0 +1,21 @@
+{
+  "name": "perecastor",
+  "version": "0.1.0",
+  "description": "Story-based REST test framework",
+  "keywords": [
+    "rest",
+    "test"
+  ],
+  "author": {
+    "name": "Ov",
+    "email": "ov@annexe3.com"
+  },
+  "dependencies": {
+    "restify": "2.0.x",
+    "colors": "0.6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/annexe3/perecastor.git"
+  }
+}
