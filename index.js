@@ -92,8 +92,12 @@ Histoire.prototype = {
             ? ''
             : ('?' + querystring.stringify(params))
         );
+        var opts = {
+          path: query,
+          headers: chapter.headers
+        };
         if (chapter.type == 'GET') {
-          self.client.get(query, callback);
+          self.client.get(opts, callback);
         } else {
           self.client.del({
             path: query,
