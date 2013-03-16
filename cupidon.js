@@ -6,15 +6,29 @@ var match = function(result, expected, context) {
   } else if (typeof expected == 'function') {
     return expected(result, context);
   } else if (expected instanceof Array) {
-    if (result.length != expected.length) {
-      return false;
-    }
+    console.log(expected);
+
+    if (!result || !(result instanceof Array)) return false;
+
+    var available = [].concat(result);
+
     var ok = true;
     expected.forEach(function(item, idx) {
-      if (!match(result[idx], item, context))  {
+      var foundIdx = undefined;
+
+      available.forEach(function(ritem, ridx) {
+        if (foundIdx === undefined && match(ritem, item, context)) {
+          foundIdx = ridx;
+        }
+      });
+
+      if (foundIdx === undefined) {
         ok = false;
+      } else {
+        available.splice(foundIdx, 1);
       }
     });
+
     return ok;
   } else {
     var ok = true;
